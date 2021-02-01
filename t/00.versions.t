@@ -5,14 +5,15 @@ use warnings;
 
 # I tried 'require'-ing modules but that did not work.
 
-use Config::Tiny; # For the version #.
+use Config::Plugin::TinyManifold; # For the version #.
 
 use Test::More;
 
-use File::Spec;
-use File::Temp;
+use Carp;
+use Config::Tiny;
 use strict;
-use utf8;
+use vars;
+use warnings;
 
 # ----------------------
 
@@ -20,13 +21,14 @@ pass('All external modules loaded');
 
 my(@modules) = qw
 /
-	File::Spec
-	File::Temp
+	Carp
+	Config::Tiny
 	strict
-	utf8
+	vars
+	warnings
 /;
 
-diag "Testing Config::Tiny V $Config::Tiny::VERSION";
+diag "Testing Config::Plugin::TinyManifold V $Config::Plugin::TinyManifold::VERSION";
 
 for my $module (@modules)
 {
